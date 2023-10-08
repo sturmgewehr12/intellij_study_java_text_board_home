@@ -12,8 +12,7 @@ public class Main {
 
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
-
-
+    Article lastArticle = null;
 
     System.out.println("== 자바 텍스트 게시판 ==");
     System.out.println("== 시작 ==");
@@ -33,12 +32,24 @@ public class Main {
         String cmd3 = sc.nextLine();
 
         Article article = new Article(id, cmd2, cmd3);
+        lastArticle = article;
         //System.out.printf(" %d번 게시물 작성 완료! -- 제목 : %s || 내용 : %s", id, cmd2, cmd3);
         System.out.println("생성된 게시물 객체 : " + article);
 
         id++;
-      }
-      else if(cmd.equals("exit")){
+      } else if (cmd.equals("detail")) {
+        Article article = lastArticle;
+
+        if(article == null){
+          System.out.println("게시물 없음!");
+          continue;
+        }
+        else{
+          System.out.println("최근 게시물 : " + article);
+        }
+
+
+      } else if(cmd.equals("exit")){
         System.out.println("프로그램을 종료 합니다.");
         break;
       }else{

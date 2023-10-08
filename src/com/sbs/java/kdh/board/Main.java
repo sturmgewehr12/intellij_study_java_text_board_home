@@ -32,11 +32,7 @@ public class Main {
         System.out.print("내용 : ");
         String cmd3 = sc.nextLine();
 
-        Article article = new Article();
-        article.id = id;
-        article.title = cmd2;
-        article.content = cmd3;
-
+        Article article = new Article(id, cmd2, cmd3);
         //System.out.printf(" %d번 게시물 작성 완료! -- 제목 : %s || 내용 : %s", id, cmd2, cmd3);
         System.out.println("생성된 게시물 객체 : " + article);
 
@@ -54,7 +50,7 @@ public class Main {
 
     }
 
-   sc.close();
+    sc.close();
   }
 
 
@@ -65,6 +61,11 @@ class Article {
   String title;
   String content;
 
+  Article(int id , String title , String content){
+    this.id = id;
+    this.title = title;
+    this.content = content;
+  }
 
   @Override
   public String toString(){
